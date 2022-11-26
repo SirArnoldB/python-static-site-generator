@@ -6,14 +6,14 @@ import shutil
 class Parser:
     extensions: List[str] = []
 
-    def validate_extension(self, extension: str) -> bool:
+    def validat_extension(self, extension: str) -> bool:
         return extension in self.extensions
 
     def parse(self, path: Path, source: Path, dest: Path):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def read(self, path: Path):
-        with open(path) as file:
+        with open(path, "r") as file:
             return file.read()
 
     def write(self, path: Path, dest: Path, content, ext=".html"):
