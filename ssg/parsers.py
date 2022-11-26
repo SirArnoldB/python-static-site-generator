@@ -1,10 +1,10 @@
-from typing import ClassVar, List
+from typing import List
 from pathlib import Path
 import shutil
 
 
 class Parser:
-    extensions: ClassVar[List[str]] = []
+    extensions: List[str] = []
 
     def validate_extension(self, extension: str) -> bool:
         return extension in self.extensions
@@ -27,7 +27,7 @@ class Parser:
 
 
 class ResourceParser(Parser):
-    extensions: ClassVar[List[str]] = [".jpg", ".png", ".gif", ".css", ".html"]
+    extensions: List[str] = [".jpg", ".png", ".gif", ".css", ".html"]
 
     def parse(self, path: Path, source: Path, dest: Path):
         Parser.copy(path, source, dest)
