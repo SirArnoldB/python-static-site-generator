@@ -6,7 +6,7 @@ import shutil
 class Parser:
     extensions: List[str] = []
 
-    def validat_extension(self, extension: str) -> bool:
+    def valid_extension(self, extension: str) -> bool:
         return extension in self.extensions
 
     def parse(self, path: Path, source: Path, dest: Path):
