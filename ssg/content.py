@@ -5,8 +5,8 @@ from yaml import FullLoader, load
 from collections.abc import Mapping
 
 class Content(Mapping):
-    __delimeter = "^(?:-|\+){3}\s*$"
-    __regex = re.compile(__delimeter, re.MULTILINE)
+    __delimiter = "^(?:-|\+){3}\s*$"
+    __regex = re.compile(__delimiter, re.MULTILINE)
 
     def load(self, cls, string):
         _, fm, content = self.__regex.split(string, 2)
@@ -23,14 +23,21 @@ class Content(Mapping):
 
     @property
     def type(self):
-        return None if "type" not in self.data else self.data["type"] 
+        return self.data["type"] if "type" in self.data else None
 
     @type.setter
     def type(self):
         self.data = self.data["type"]
 
-    def __getitem__(self, __key):
-        return self.data[__key]
+    def __getitem__(self, key):
+        return self.data[key]
 
     def __iter__(self):
-        return super().__iter__()
+        return iter(self.data)
+
+    def __len__(self):
+        return len(self.data)
+
+    def __repr__(self):
+        data = {}
+        return str(data)
